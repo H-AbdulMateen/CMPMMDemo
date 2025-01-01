@@ -31,6 +31,9 @@ kotlin{
     sourceSets{
         commonMain.dependencies {
 
+            implementation(projects.core.network)
+
+            api(libs.koin.core)
         }
     }
 }

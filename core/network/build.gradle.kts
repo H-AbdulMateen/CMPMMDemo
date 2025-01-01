@@ -30,7 +30,8 @@ kotlin{
 
     sourceSets{
         commonMain.dependencies {
-
+            api(libs.koin.core)
+            implementation(libs.bundles.ktor)
         }
     }
 }
