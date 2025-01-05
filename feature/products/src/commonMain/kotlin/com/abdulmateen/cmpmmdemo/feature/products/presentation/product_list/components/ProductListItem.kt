@@ -201,7 +201,7 @@ fun ProductListItem(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                Text(text = "Rs ${item.price}", style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold, color = Green))
+                Text(text = "Rs ${item.price}", style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold, color = Green))
                 Text(text = "2 hours ago", style = MaterialTheme.typography.bodySmall.copy(fontSize = 9.sp, color = Gray))
             }
         }
