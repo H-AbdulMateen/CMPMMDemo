@@ -29,11 +29,21 @@ kotlin{
     }
 
     sourceSets{
-        commonMain.dependencies {
 
+        androidMain.dependencies {
+            implementation(libs.ktor.client.okhttp)
+        }
+
+        commonMain.dependencies {
+            implementation(compose.runtime)
             implementation(projects.core.network)
 
             api(libs.koin.core)
+            implementation(libs.bundles.ktor)
+        }
+
+        iosMain.dependencies {
+            implementation(libs.ktor.client.darwin)
         }
     }
 }

@@ -4,8 +4,6 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
-//    alias(libs.plugins.composeMultiplatform)
-//    alias(libs.plugins.composeCompiler)
     alias(libs.plugins.jetbrains.kotlin.serialization)
 }
 
@@ -23,20 +21,33 @@ kotlin{
         iosSimulatorArm64()
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
-            baseName = "CoreDomain"
+            baseName = "DI"
             isStatic = true
         }
     }
 
     sourceSets{
-        commonMain.dependencies {
 
+        androidMain.dependencies {
+            implementation(libs.ktor.client.okhttp)
+        }
+
+        commonMain.dependencies {
+            implementation(projects.feature.products)
+            implementation(projects.core.network)
+            implementation(libs.koin.compose.viewmodel)
+            api(libs.koin.core)
+            implementation(libs.bundles.ktor)
+        }
+
+        iosMain.dependencies {
+            implementation(libs.ktor.client.darwin)
         }
     }
 }
 
 android{
-    namespace = "com.abdulmateen.cmpmmdemo.core.common"
+    namespace = "com.abdulmateen.cmpmmdemo.di"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {

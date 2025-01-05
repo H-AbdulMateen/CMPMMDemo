@@ -46,6 +46,7 @@ kotlin {
             implementation(projects.core.domain)
             implementation(projects.core.network)
             implementation(projects.core.presentation)
+            implementation(projects.di)
 
             implementation(projects.feature.products)
 

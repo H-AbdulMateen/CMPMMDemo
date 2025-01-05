@@ -23,7 +23,7 @@ kotlin{
         iosSimulatorArm64()
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
-            baseName = "CoreCommon"
+            baseName = "FeatureProducts"
             isStatic = true
         }
     }
@@ -35,6 +35,11 @@ kotlin{
             implementation(libs.androidx.activity.compose)
         }
         commonMain.dependencies {
+            //Personal Modules
+            api(projects.core.network)
+            api(projects.core.domain)
+
+            //3rd Party Libs
             implementation(compose.runtime)
             implementation(compose.foundation)
             implementation(compose.material3)
@@ -43,6 +48,7 @@ kotlin{
             implementation(compose.components.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtime.compose)
+            implementation(libs.koin.compose.viewmodel)
             api(libs.koin.core)
             implementation(libs.bundles.ktor)
             implementation(libs.bundles.coil)
