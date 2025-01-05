@@ -2,6 +2,7 @@ package com.abdulmateen.cmpmmdemo.feature.products.presentation.product_list
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.abdulmateen.cmpmmdemo.core.common.presentation.toUiText
 import com.abdulmateen.cmpmmdemo.core.domain.onError
 import com.abdulmateen.cmpmmdemo.core.domain.onSuccess
 import com.abdulmateen.cmpmmdemo.feature.products.domain.ProductRepository
@@ -41,8 +42,8 @@ class ProductListViewModel(
                     _uiState.update {
                         it.copy(
                             isLoading = false,
-                            productList = searchResults
-//                            errorMessage = null,
+                            productList = searchResults,
+                            errorMessage = null
                         )
                     }
                 }
@@ -51,7 +52,7 @@ class ProductListViewModel(
                         it.copy(
                             productList = emptyList(),
                             isLoading = false,
-//                            errorMessage = error.toUiText()
+                            errorMessage = error.toUiText()
                         )
                     }
                 }

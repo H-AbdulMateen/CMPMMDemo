@@ -17,6 +17,7 @@ import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -61,7 +62,14 @@ fun ProductListScreen(
         ) {
             if (uiState.isLoading){
                 CircularProgressIndicator()
-            }else{
+            }
+            else if (uiState.errorMessage != null){
+                Text(
+                    text = uiState.errorMessage.asString(),
+                    style = MaterialTheme.typography.labelMedium
+                )
+            }
+            else{
                 LazyVerticalGrid(
                     modifier = Modifier.fillMaxSize().padding(innerPadding).padding(8.dp),
                     columns = GridCells.Fixed(count = 2),

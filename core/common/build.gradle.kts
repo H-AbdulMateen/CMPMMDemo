@@ -35,8 +35,10 @@ kotlin{
         }
 
         commonMain.dependencies {
+            implementation(compose.components.resources)
             implementation(compose.runtime)
             implementation(projects.core.network)
+            implementation(projects.core.domain)
 
             api(libs.koin.core)
             implementation(libs.bundles.ktor)

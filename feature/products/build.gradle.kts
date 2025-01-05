@@ -38,6 +38,7 @@ kotlin{
             //Personal Modules
             api(projects.core.network)
             api(projects.core.domain)
+            api(projects.core.common)
 
             //3rd Party Libs
             implementation(compose.runtime)
@@ -52,6 +53,12 @@ kotlin{
             api(libs.koin.core)
             implementation(libs.bundles.ktor)
             implementation(libs.bundles.coil)
+        }
+        commonTest.dependencies {
+            implementation(libs.kotlin.test)
+            implementation(kotlin("test-annotations-common"))
+            implementation(libs.assertk)
+
         }
     }
 }

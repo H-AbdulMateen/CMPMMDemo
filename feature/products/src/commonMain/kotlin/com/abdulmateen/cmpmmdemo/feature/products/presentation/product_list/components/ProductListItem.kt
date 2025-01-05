@@ -113,7 +113,7 @@ fun ProductListItem(
                         },
                         contentDescription = item.title,
                         contentScale = if (result.isSuccess) {
-                            ContentScale.Crop
+                            ContentScale.Fit
                         } else {
                             ContentScale.Fit
                         },
