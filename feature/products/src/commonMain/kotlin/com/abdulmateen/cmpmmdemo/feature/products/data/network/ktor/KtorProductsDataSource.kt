@@ -13,7 +13,6 @@ class KtorProductsDataSource(
     private val httpClient: HttpClient
 ): RemoteProductsDataSource {
     override suspend fun fetchProducts(): Result<List<ProductDto>, DataError.Remote> {
-
         return safeCall<List<ProductDto>> {
             httpClient.get(
                 urlString = BASE_URL + "products"

@@ -50,15 +50,17 @@ kotlin{
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtime.compose)
             implementation(libs.koin.compose.viewmodel)
+
             api(libs.koin.core)
             implementation(libs.bundles.ktor)
             implementation(libs.bundles.coil)
+
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
             implementation(kotlin("test-annotations-common"))
             implementation(libs.assertk)
-
+            implementation(libs.ktor.client.mock)
         }
     }
 }
