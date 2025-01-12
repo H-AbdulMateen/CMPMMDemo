@@ -51,7 +51,6 @@ kotlin{
             implementation(libs.androidx.lifecycle.runtime.compose)
             implementation(libs.koin.compose.viewmodel)
 
-            api(libs.koin.core)
             implementation(libs.bundles.ktor)
             implementation(libs.bundles.coil)
 
@@ -66,7 +65,7 @@ kotlin{
 }
 
 android{
-    namespace = "com.abdulmateen.cmpmmdemo.core.common"
+    namespace = "com.abdulmateen.cmpmmdemo.feature.products"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {

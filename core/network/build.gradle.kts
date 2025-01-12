@@ -4,8 +4,6 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
-    alias(libs.plugins.composeMultiplatform)
-    alias(libs.plugins.composeCompiler)
     alias(libs.plugins.jetbrains.kotlin.serialization)
 }
 
@@ -23,15 +21,13 @@ kotlin{
         iosSimulatorArm64()
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
-            baseName = "CoreCommon"
+            baseName = "CoreNetwork"
             isStatic = true
         }
     }
 
     sourceSets{
         commonMain.dependencies {
-
-            implementation(compose.runtime)
 
             implementation(projects.core.domain)
 
@@ -42,7 +38,7 @@ kotlin{
 }
 
 android{
-    namespace = "com.abdulmateen.cmpmmdemo.core.common"
+    namespace = "com.abdulmateen.cmpmmdemo.core.network"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {
