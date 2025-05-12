@@ -23,7 +23,7 @@ kotlin{
         iosSimulatorArm64()
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
-            baseName = "FeatureProducts"
+            baseName = "CoreNavigation"
             isStatic = true
         }
     }
@@ -34,39 +34,22 @@ kotlin{
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
         }
-        commonMain.dependencies {
-            //Personal Modules
-            api(projects.core.network)
-            api(projects.core.domain)
-            api(projects.core.common)
 
-            //3rd Party Libs
+        commonMain.dependencies {
             implementation(compose.runtime)
             implementation(compose.foundation)
             implementation(compose.material3)
             implementation(compose.ui)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
-            implementation(libs.androidx.lifecycle.viewmodel)
-            implementation(libs.androidx.lifecycle.runtime.compose)
-            implementation(libs.koin.compose.viewmodel)
             implementation(libs.compose.navigation)
-
-            implementation(libs.bundles.ktor)
-            implementation(libs.bundles.coil)
-
-        }
-        commonTest.dependencies {
-            implementation(libs.kotlin.test)
-            implementation(kotlin("test-annotations-common"))
-            implementation(libs.assertk)
-            implementation(libs.ktor.client.mock)
+            implementation(libs.ktor.serialization.kotlinx.json)
         }
     }
 }
 
 android{
-    namespace = "com.abdulmateen.cmpmmdemo.feature.products"
+    namespace = "com.abdulmateen.cmpmmdemo.core.navigation"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {
@@ -86,7 +69,4 @@ android{
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
-}
-dependencies {
-    debugImplementation(libs.androidx.ui.tooling)
 }

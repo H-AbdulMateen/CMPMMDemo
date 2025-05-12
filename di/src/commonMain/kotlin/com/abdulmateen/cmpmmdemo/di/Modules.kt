@@ -1,6 +1,7 @@
 package com.abdulmateen.cmpmmdemo.di
 
 import com.abdulmateen.cmpmmdemo.core.network.ktor.HttpClientFactory
+import com.abdulmateen.cmpmmdemo.feature.auth.presentation.login.LoginViewModel
 import com.abdulmateen.cmpmmdemo.feature.products.data.network.ktor.KtorProductsDataSource
 import com.abdulmateen.cmpmmdemo.feature.products.data.network.ktor.RemoteProductsDataSource
 import com.abdulmateen.cmpmmdemo.feature.products.data.repository.ProductRepositoryImpl
@@ -20,6 +21,7 @@ val sharedModule = module {
     singleOf(::ProductRepositoryImpl).bind<ProductRepository>()
 
     viewModelOf(::ProductListViewModel)
+    viewModelOf(::LoginViewModel)
 
 
 }

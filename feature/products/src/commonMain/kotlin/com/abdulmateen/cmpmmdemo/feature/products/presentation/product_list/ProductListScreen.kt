@@ -28,10 +28,12 @@ import androidx.compose.ui.graphics.Color.Companion.Blue
 import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.navigation.NavController
 import cmpmmdemo.feature.products.generated.resources.Res
 import cmpmmdemo.feature.products.generated.resources.ic_logo
 import cmpmmdemo.feature.products.generated.resources.ic_notification
 import cmpmmdemo.feature.products.generated.resources.ic_search
+import com.abdulmateen.cmpmmdemo.feature.navigation.HomeNavRoutes
 import com.abdulmateen.cmpmmdemo.feature.products.domain.Product
 import com.abdulmateen.cmpmmdemo.feature.products.domain.Rating
 import com.abdulmateen.cmpmmdemo.feature.products.presentation.product_list.components.ProductListItem
@@ -40,16 +42,19 @@ import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 fun ProductListScreenRoot(
-    viewModel: ProductListViewModel = koinViewModel()
+    viewModel: ProductListViewModel = koinViewModel(),
+    navController: NavController
 ) {
     ProductListScreen(
-        uiState = viewModel.uiState.collectAsStateWithLifecycle().value
+        uiState = viewModel.uiState.collectAsStateWithLifecycle().value,
+        navController = navController
     )
 }
 
 @Composable
 fun ProductListScreen(
-    uiState: ProductListUiState
+    uiState: ProductListUiState,
+    navController: NavController
 ) {
     Scaffold(
         topBar = {
@@ -78,7 +83,9 @@ fun ProductListScreen(
                 ) {
                     items(items = uiState.productList) { item ->
                         ProductListItem(
-                            onClick = {},
+                            onClick = {
+                                navController.navigate(HomeNavRoutes.Detail)
+                            },
                             item = item
                         )
                     }

@@ -45,10 +45,12 @@ kotlin {
             implementation(projects.core.common)
             implementation(projects.core.domain)
             implementation(projects.core.network)
-            implementation(projects.core.presentation)
+            implementation(projects.core.ui)
             implementation(projects.di)
 
-            implementation(projects.feature.products)
+            implementation(projects.feature.main)
+            implementation(projects.feature.auth)
+
 
             implementation(compose.runtime)
             implementation(compose.foundation)
@@ -64,6 +66,7 @@ kotlin {
             api(libs.koin.core)
             implementation(libs.bundles.ktor)
             implementation(libs.bundles.coil)
+            implementation(libs.compose.navigation)
         }
 
 

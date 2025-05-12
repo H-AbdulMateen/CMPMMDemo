@@ -33,6 +33,7 @@ kotlin{
         }
 
         commonMain.dependencies {
+            implementation(projects.feature.auth)
             implementation(projects.feature.products)
             implementation(projects.core.network)
             implementation(libs.koin.compose.viewmodel)

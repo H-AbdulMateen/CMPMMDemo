@@ -23,7 +23,7 @@ kotlin{
         iosSimulatorArm64()
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
-            baseName = "FeatureProducts"
+            baseName = "FeatureAuth"
             isStatic = true
         }
     }
@@ -39,6 +39,9 @@ kotlin{
             api(projects.core.network)
             api(projects.core.domain)
             api(projects.core.common)
+            api(projects.core.ui)
+            api(projects.feature.auth)
+            api(projects.feature.products)
 
             //3rd Party Libs
             implementation(compose.runtime)
@@ -50,11 +53,11 @@ kotlin{
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtime.compose)
             implementation(libs.koin.compose.viewmodel)
-            implementation(libs.compose.navigation)
 
             implementation(libs.bundles.ktor)
             implementation(libs.bundles.coil)
-
+            implementation(libs.ktor.serialization.kotlinx.json)
+            implementation(libs.compose.navigation)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
@@ -66,7 +69,7 @@ kotlin{
 }
 
 android{
-    namespace = "com.abdulmateen.cmpmmdemo.feature.products"
+    namespace = "com.abdulmateen.cmpmmdemo.feature.main"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {
