@@ -39,6 +39,7 @@ kotlin{
             api(projects.core.network)
             api(projects.core.domain)
             api(projects.core.common)
+            api(projects.core.network)
             api(projects.core.ui)
 
             //3rd Party Libs

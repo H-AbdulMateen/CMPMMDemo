@@ -26,10 +26,17 @@ fun App() {
                 navController = navController
             ){
                 composable<AppNavigation.Auth> {
-                    AuthNavGraph (onLoginSuccess = {navController.navigate(AppNavigation.Main)})
+                    AuthNavGraph (onLoginSuccess = {
+                        navController.popBackStack()
+                        navController.navigate(AppNavigation.Main)})
                 }
                 composable<AppNavigation.Main> {
-                    MainScreen()
+                    MainScreen(
+                        onLogout = {
+                            navController.popBackStack()
+                            navController.navigate(AppNavigation.Auth)
+                        }
+                    )
                 }
             }
         }

@@ -3,6 +3,7 @@ package com.abdulmateen.cmpmmdemo.main
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -23,21 +24,38 @@ import androidx.compose.runtime.getValue
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.abdulmateen.cmpmmdemo.feature.navigation.HomeNavGraph
+import com.abdulmateen.cmpmmdemo.feature.cart.prsenentation.CartScreenRoot
+import com.abdulmateen.cmpmmdemo.feature.products.navigation.HomeNavGraph
+import com.abdulmateen.cmpmmdemo.feature.profile.presentation.ProfileScreenRoot
+import com.abdulmateen.cmpmmdemo.feature.wishlist.presentation.WishlistScreen
+import com.abdulmateen.cmpmmdemo.feature.wishlist.presentation.WishlistScreenRoot
 
 @Composable
-fun MainScreen(){
+fun MainScreen(
+    onLogout: () -> Unit
+){
     val navBottomController = rememberNavController()
     Scaffold(
         bottomBar = { BottomNavigationUI(navController = navBottomController) }
-    ) {
-        Box(modifier = Modifier.fillMaxSize()){
+    ) {innerPadding ->
+        Box(modifier = Modifier.fillMaxSize().padding(innerPadding)){
             NavHost(
                 navController = navBottomController,
                 startDestination = BottomNavRoutes.Home
             ) {
                 composable<BottomNavRoutes.Home> {
                     HomeNavGraph()
+                }
+                composable<BottomNavRoutes.Wishlist> {
+                    WishlistScreenRoot()
+                }
+                composable<BottomNavRoutes.Cart> {
+                    CartScreenRoot()
+                }
+                composable<BottomNavRoutes.Profile> {
+                    ProfileScreenRoot(
+                        onLogout = onLogout
+                    )
                 }
             }
         }

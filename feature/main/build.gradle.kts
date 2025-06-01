@@ -42,6 +42,9 @@ kotlin{
             api(projects.core.ui)
             api(projects.feature.auth)
             api(projects.feature.products)
+            api(projects.feature.wishlist)
+            api(projects.feature.cart)
+            api(projects.feature.profile)
 
             //3rd Party Libs
             implementation(compose.runtime)

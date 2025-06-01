@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.abdulmateen.cmpmmdemo.feature.auth.presentation.login.LoginScreenRoot
+import com.abdulmateen.cmpmmdemo.feature.auth.presentation.login.presentation.LoginScreenRoot
 
 @Composable
 fun AuthNavGraph(
@@ -18,7 +18,6 @@ fun AuthNavGraph(
     ){
         composable<AuthNavRoutes.Login> {
             LoginScreenRoot(
-                navController = navController,
                 onLoginSuccess = onLoginSuccess
             )
         }

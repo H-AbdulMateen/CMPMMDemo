@@ -2,9 +2,9 @@ package com.abdulmateen.cmpmmdemo.feature.products
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import com.abdulmateen.cmpmmdemo.feature.products.domain.Product
-import com.abdulmateen.cmpmmdemo.feature.products.domain.Rating
-import com.abdulmateen.cmpmmdemo.feature.products.presentation.product_list.components.ProductListItem
+import com.abdulmateen.cmpmmdemo.feature.products.presentation.product_list.domain.Product
+import com.abdulmateen.cmpmmdemo.feature.products.presentation.product_list.domain.Rating
+import com.abdulmateen.cmpmmdemo.feature.products.presentation.product_list.presentation.components.ProductListItem
 
 @Preview
 @Composable

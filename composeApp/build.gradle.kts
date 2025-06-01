@@ -12,6 +12,15 @@ plugins {
 }
 
 kotlin {
+    targets.withType(org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget::class).all {
+        binaries.all {
+            freeCompilerArgs += listOf(
+                "-Xverbose-phases=CacheDeserializationPhase",
+                "-Xreport-perf",
+                "-Xprint-backend-ir"
+            )
+        }
+    }
     androidTarget {
         @OptIn(ExperimentalKotlinGradlePluginApi::class)
         compilerOptions {

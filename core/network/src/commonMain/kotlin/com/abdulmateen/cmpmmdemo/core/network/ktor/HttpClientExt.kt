@@ -9,6 +9,8 @@ import io.ktor.util.network.UnresolvedAddressException
 import kotlinx.coroutines.ensureActive
 import kotlin.coroutines.coroutineContext
 import io.ktor.client.call.NoTransformationFoundException
+import io.ktor.client.plugins.logging.SIMPLE
+import io.ktor.util.logging.Logger
 
 suspend inline fun <reified T> safeCall(
     execute: () -> HttpResponse
@@ -16,11 +18,14 @@ suspend inline fun <reified T> safeCall(
     val response = try {
         execute()
     } catch(e: SocketTimeoutException) {
+        println("Message: ${e.message}, Cause: ${e.cause}")
         return Result.Error(DataError.Remote.REQUEST_TIMEOUT)
     } catch(e: UnresolvedAddressException) {
+        println("Message: ${e.message}, Cause: ${e.cause}")
         return Result.Error(DataError.Remote.NO_INTERNET)
     } catch (e: Exception) {
         coroutineContext.ensureActive()
+        println("Message: ${e.message}, Cause: ${e.cause}")
         return Result.Error(DataError.Remote.UNKNOWN)
     }
 
