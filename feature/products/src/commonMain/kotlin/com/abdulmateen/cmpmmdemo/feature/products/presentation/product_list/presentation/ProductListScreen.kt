@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -19,12 +20,16 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.TopAppBarScrollBehavior
+import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.graphics.Color.Companion.Blue
 import androidx.compose.ui.graphics.Color.Companion.White
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
@@ -34,7 +39,11 @@ import cmpmmdemo.feature.products.generated.resources.ic_notification
 import cmpmmdemo.feature.products.generated.resources.ic_search
 import com.abdulmateen.cmpmmdemo.feature.products.navigation.HomeNavRoutes
 import com.abdulmateen.cmpmmdemo.feature.products.presentation.product_list.presentation.components.ProductListItem
+import com.abdulmateen.cmpmmdemo.feature.products.presentation.product_list.domain.Product
 import org.jetbrains.compose.resources.painterResource
+import androidx.navigation.compose.rememberNavController
+import com.abdulmateen.cmpmmdemo.feature.products.presentation.product_list.domain.Rating
+import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
@@ -48,6 +57,7 @@ fun ProductListScreenRoot(
     )
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ProductListScreen(
     uiState: ProductListUiState,
@@ -59,7 +69,7 @@ fun ProductListScreen(
         }
     ) { innerPadding ->
         Box(
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier.fillMaxSize().padding(top = innerPadding.calculateTopPadding()),
             contentAlignment = Alignment.Center
         ) {
             if (uiState.isLoading){
@@ -133,4 +143,20 @@ private fun TopBarCentered() {
             }
         }
     )
+}
+
+@Preview
+@Composable
+fun ProductListScreenPreview() {
+    val uiState = ProductListUiState(
+        productList = listOf(
+            Product(id = 1, title = "Product 1", price = 10.0, description = "Description 1", category = "Category 1", image = "", rating = Rating(
+                rate = 4.5,
+                count = 100
+            )
+            ),
+            Product(id = 2, title = "Product 2", price = 20.0, description = "Description 2", category = "Category 2", image = "", rating = Rating(rate = 4.0, count = 200))
+        )
+    )
+    ProductListScreen(uiState = uiState, navController = rememberNavController())
 }

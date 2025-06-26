@@ -1,9 +1,10 @@
 package com.abdulmateen.cmpmmdemo.main
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -14,31 +15,28 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import androidx.navigation.compose.currentBackStackEntryAsState
-import org.jetbrains.compose.resources.ExperimentalResourceApi
-import org.jetbrains.compose.resources.painterResource
-import androidx.compose.runtime.getValue
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.abdulmateen.cmpmmdemo.feature.cart.prsenentation.CartScreenRoot
 import com.abdulmateen.cmpmmdemo.feature.products.navigation.HomeNavGraph
 import com.abdulmateen.cmpmmdemo.feature.profile.presentation.ProfileScreenRoot
-import com.abdulmateen.cmpmmdemo.feature.wishlist.presentation.WishlistScreen
 import com.abdulmateen.cmpmmdemo.feature.wishlist.presentation.WishlistScreenRoot
+import org.jetbrains.compose.resources.ExperimentalResourceApi
+import org.jetbrains.compose.resources.painterResource
 
 @Composable
 fun MainScreen(
     onLogout: () -> Unit
-){
+) {
     val navBottomController = rememberNavController()
-    Scaffold(
-        bottomBar = { BottomNavigationUI(navController = navBottomController) }
-    ) {innerPadding ->
-        Box(modifier = Modifier.fillMaxSize().padding(innerPadding)){
+    Column(modifier = Modifier.fillMaxSize().background(color = MaterialTheme.colorScheme.background)) {
+        Box(modifier = Modifier.weight(.1f)) {
             NavHost(
                 navController = navBottomController,
                 startDestination = BottomNavRoutes.Home
@@ -59,6 +57,7 @@ fun MainScreen(
                 }
             }
         }
+        BottomNavigationUI(navController = navBottomController)
     }
 }
 
@@ -92,7 +91,8 @@ fun BottomNavigationUI(
                 BottomNavigation.Profile,
             )
             items.forEach {
-                NavigationBarItem(label = { Text(text = it.title) },
+                NavigationBarItem(
+                    label = { Text(text = it.title) },
                     selected = it.route == currentRoute,
                     icon = {
                         Icon(
