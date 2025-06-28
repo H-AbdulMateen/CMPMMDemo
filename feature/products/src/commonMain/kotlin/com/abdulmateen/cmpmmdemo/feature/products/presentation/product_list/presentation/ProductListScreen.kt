@@ -1,6 +1,7 @@
 package com.abdulmateen.cmpmmdemo.feature.products.presentation.product_list.presentation
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -13,6 +14,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -26,7 +28,9 @@ import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.graphics.BlurEffect
 import androidx.compose.ui.graphics.Color.Companion.Blue
 import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.input.nestedscroll.nestedScroll
@@ -42,6 +46,7 @@ import com.abdulmateen.cmpmmdemo.feature.products.presentation.product_list.pres
 import com.abdulmateen.cmpmmdemo.feature.products.presentation.product_list.domain.Product
 import org.jetbrains.compose.resources.painterResource
 import androidx.navigation.compose.rememberNavController
+import cmpmmdemo.feature.products.generated.resources.compose_multiplatform
 import com.abdulmateen.cmpmmdemo.feature.products.presentation.product_list.domain.Rating
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.viewmodel.koinViewModel
@@ -105,24 +110,22 @@ fun ProductListScreen(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun TopBarCentered() {
+    Box(modifier = Modifier.fillMaxWidth().padding(horizontal = 12.dp)){
+
+    }
     CenterAlignedTopAppBar(
         navigationIcon = {
             Text(
                 modifier = Modifier
-                    .padding(8.dp)
-                    .drawBehind {
-                        drawCircle(
-                            color = Blue,
-                            radius = this.size.maxDimension
-                        )
-                    },
-                text = "S",
-                color = White
+                    .padding(8.dp),
+                text = "Welcome",
+                style = MaterialTheme.typography.labelLarge,
+                color = Blue
             )
         },
         title = {
             Image(
-                painter = painterResource(resource = Res.drawable.ic_logo),
+                painter = painterResource(resource = Res.drawable.compose_multiplatform),
                 contentDescription = "LogoImage",
                 modifier = Modifier.size(48.dp)
             )

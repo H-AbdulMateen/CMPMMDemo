@@ -39,6 +39,7 @@ import com.abdulmateen.cmpmmdemo.core.ui.components.OutlinedTFPassword
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.stringResource
+import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
@@ -147,4 +148,13 @@ fun LoginScreen(
     }
 }
 
+@Preview
+@Composable
+fun LoginScreenPreview() {
+    LoginScreen(
+        uiState = LoginUiState(),
+        uiAction = {},
+        onLoginSuccess = {}
+    )
+}
 
