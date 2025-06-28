@@ -37,7 +37,7 @@ A modern shopping app built using **Kotlin Multiplatform** (Android only for now
 
 | Login Screen | Home Screen | Profile Screen |
 |-------------|-------------|----------------|
-| ![Login](https://raw.githubusercontent.com/H-AbdulMateen/CMPMMDemo/refs/heads/master/screenshots/login.png) | ![Home](assets/screenshots/Screenshot_20250628_104042.png) | ![Profile](assets/screenshots/Screenshot_20250628_104101.png) |
+| ![Login](https://raw.githubusercontent.com/H-AbdulMateen/CMPMMDemo/refs/heads/master/screenshots/login.png) | ![Home](https://github.com/H-AbdulMateen/CMPMMDemo/blob/master/screenshots/products.png) | ![Profile](https://github.com/H-AbdulMateen/CMPMMDemo/blob/master/screenshots/profile.png) |
 
 ---
 
